@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-NRUG::Application.config.secret_token = '4ba32a08ab07b3253f30c12c7e3a86b1f3f7548fc5c51434feced0a72aede705411ed577688e5141531cfa651ed24cac7ef0c5de3faecdd821eab2449487d1f3'
+NRUG::Application.config.secret_token = '76b14ef771d6337159d350d4992686b4fe633231f893dcf36ebf116f11237a2978dc850e82b4a5ed45cb4ca670a5fe329ada7596399bf8b468630c2415bca406'

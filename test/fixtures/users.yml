@@ -1,9 +1,11 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
   name: MyString
-  medium: MyString
+  email: MyString
+  method: MyString
 
 two:
   name: MyString
-  medium: MyString
+  email: MyString
+  method: MyString

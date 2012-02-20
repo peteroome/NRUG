@@ -1,20 +1,20 @@
-<p id="notice"><%= notice %></p>
+<h1>User</h1>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
+<td>
+	<dt><h3>Name:</h3></dt>
+	<dd><%= content_tag :p, @user.name %></dd>
+	<dt><h3>Medium:</h3></dt>
+	<dd><%= content_tag :p, @user.medium %></dd>
+	<dt><h3>Sent Messages:</h3></dt>
+	<dd>
+		<ul>
+			<% @user.sent_messages.each do |message| %>
+				<li>
+					<%= content_tag :p, "<b>Sent on: #{message.created_at}</b>".html_safe %>
+					<%= content_tag :p, message.body %>
+				</li>
+			<% end %>
+		</ul>
+	</dd>
 </p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Method:</b>
-  <%= @user.method %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

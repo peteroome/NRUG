@@ -1,3 +1,9 @@
 <nav>
-	<%= link_to("Sign Out", destroy_user_session_url, :method => :delete, :title => "Log Out") %>
+	<% if current_user %>
+		<%= link_to("Messages", messages_url) %>
+		<%= link_to("Users", users_url) %>
+		||
+		Welcome, <%= link_to(current_user.name, edit_user_url(current_user)) %>!
+		<%= link_to "Sign Out", logout_path %>
+	<% end %>
 </nav>

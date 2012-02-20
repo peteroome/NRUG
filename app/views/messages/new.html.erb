@@ -1,5 +1,13 @@
-<h1>New message</h1>
+<h1>Send Message</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', messages_path %>
+<h2>Messages</h2>
+<ul>
+	<% @messages.each do |message| %>
+		<li>
+			<h3>Sent by <%= message.user.name %>, <%= time_ago_in_words(message.created_at) %></h3>
+			<%= content_tag :p, message.body %>
+		</li>
+	<% end %>
+</ul>

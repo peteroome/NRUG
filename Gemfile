@@ -1,28 +1,30 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.1.3'
 
+# Authentication
+gem "omniauth"
+gem "omniauth-facebook"
+gem "omniauth-twitter"
+
+gem 'kaminari'
+gem 'asset_sync'
 gem 'thin'
 gem 'unicorn'
-gem 'pg'
-gem 'twitter'
-gem 'devise'
+gem 'redis', '2.2.2'
+gem "pg"
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
-  gem 'uglifier'
+  gem 'sass-rails',   '~> 3.1.5'
+  gem 'coffee-rails', '~> 3.1.1'
+  gem 'uglifier', '>= 1.0.3'
 end
 
 gem 'jquery-rails'
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
 group :test do
   # Pretty printed test output
-  gem 'turn', :require => false
-  gem 'minitest'
+  gem 'turn', '0.8.2', :require => false
 end

@@ -1,23 +1,13 @@
-<h1>Listing messages</h1>
+<h1>Send Message</h1>
 
-<table>
-  <tr>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= render 'form' %>
 
-<% @messages.each do |message| %>
-  <tr>
-    <td><%= message.body %></td>
-    <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
-    <td><%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Message', new_message_path %>
+<h2>Messages</h2>
+<ul>
+	<% @messages.each do |message| %>
+		<li>
+			<h3>Sent by <%= link_to(message.user, user_url(message.user)) %>, <%= time_ago_in_words(message.created_at) %></h3>
+			<%= content_tag :p, message.body %>
+		</li>
+	<% end %>
+</ul>

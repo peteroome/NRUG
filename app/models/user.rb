@@ -1,10 +1,27 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  # Relationships
+  #
+  has_many :sent_messages, :class_name => "Message", :foreign_key => "user_id"
+  
+  # Instance variables
+  #
+  def to_s
+    name
+  end
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_protected :last_login
+  # Class variables
+  #
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["info"]["name"]
+      user.first_name = auth["info"]["first_name"]
+      user.last_name = auth["info"]["first_name"]
+      user.email = auth["info"]["email"]
+      user.website = auth["info"]["urls"]["Website"]
+      user.twitter = auth["info"]["urls"]["Twitter"]
+      user.facebook = auth["info"]["urls"]["Facebook"]
+    end
+  end
 end

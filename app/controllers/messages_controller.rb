@@ -1,10 +1,11 @@
 class MessagesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :require_user
   
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    @message = Message.new
+    @messages = Message.order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,6 +28,7 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
+    @messages = Message.order("created_at DESC")
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,13 +45,14 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+    @message.user = current_user
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to messages_url, notice: 'Message was successfully created.' }
         format.json { render json: @message, status: :created, location: @message }
       else
-        format.html { render action: "new" }
+        format.html { render action: :index }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end

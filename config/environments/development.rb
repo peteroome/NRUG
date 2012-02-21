@@ -28,7 +28,7 @@ NRUG::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
-  # Requested by Devise
+  # For URL Shortening
   #
-  config.action_mailer.default_url_options = { :host => 'localhost:5000' }
+  # config.action_controller.default_url_options = {:host => "localhost:5000"}
 end

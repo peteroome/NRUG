@@ -3,6 +3,14 @@ class User < ActiveRecord::Base
   #
   has_many :sent_messages, :class_name => "Message", :foreign_key => "user_id"
   
+  # Named Scopes
+  #
+  scope :to_contact_via_twitter,
+        :conditions => ["substring(medium, 1, 1) = ?", '@']
+  
+  scope :twitter_usernames,
+        :select => "substring(medium, 2) AS username"
+  
   # Instance variables
   #
   def to_s

@@ -5,7 +5,7 @@
 <h2>Messages</h2>
 <ul>
 	<% @messages.each do |message| %>
-		<li>
+		<li id="<%= message.to_param %>">
 			<h3>Sent by <%= link_to(message.user, user_url(message.user)) %>, <%= time_ago_in_words(message.created_at) %></h3>
 			<%= content_tag :p, message.body %>
 		</li>

@@ -8,8 +8,12 @@ class MessagesController < ApplicationController
     @messages = Message.order("created_at DESC")
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @messages }
+      if params[:short_url]
+        format.html { redirect_to messages_url(:anchor => params[:short_url]) }
+      else
+        format.html # index.html.erb
+        format.json { render json: @messages }
+      end
     end
   end
 

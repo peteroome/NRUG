@@ -1,6 +1,6 @@
 NRUG::Application.routes.draw do
   
-  match '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/:provider/callback', :to => 'sessions#create'
   match "/login" => "sessions#new", :as => :login
   match "/logout" => "sessions#destroy", :as => :logout
   # match '/auth/failure', to: 'sessions#failure'
